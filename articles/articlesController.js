@@ -1,11 +1,11 @@
 const express = require("express");
 const router = express.Router();
 
-router.get("/categories", (req, res) => {
-    res.send("categorias");
+router.get("/articles/new", (req, res) => {
+    res.send("artigos");
 });
 
-router.get("/admin/categories/new", (req, res) => {
+router.get("/admin/articles/new", (req, res) => {
     res.send("admin");
 });
 

@@ -2,10 +2,12 @@ const express = require("express");
 const app = express(); 
 const bodyParser = require("body-parser");
 const connection = require("./database/database");
-const categoriesController = require("./categories/controller/categoriesController");
-const articlesController = require("./articles/controller/articlesController");
-const article = require("./articles/models/Article");
-const category = require("./categories/models/Category");
+
+const articlesController = require("./articles/articlesController");
+const categoriesController = require("./categories/categoryController");
+
+const Article = require("./articles/Article");
+const Category = require("./categories/Category");
 
 connection.authenticate()
 .then(()=>{
