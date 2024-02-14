@@ -3,9 +3,11 @@ const app = express();
 const bodyParser = require("body-parser");
 const connection = require("./database/database");
 
+//Importando Controllers
 const articlesController = require("./articles/articlesController");
 const categoriesController = require("./categories/categoryController");
 
+//Importando models
 const Article = require("./articles/Article");
 const Category = require("./categories/Category");
 
@@ -16,13 +18,13 @@ console.log("banco conectado com sucesso");
     console.log(error);
 });
 
-app.use("/", categoriesController);
-app.use("/", articlesController);
-
 app.set('view engine', 'ejs');
 app.use(express.static('public'));
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
+
+app.use("/", categoriesController);
+app.use("/", articlesController);
 
 app.get("/", function(req, res){
     res.render("index");
