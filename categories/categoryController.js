@@ -21,4 +21,14 @@ router.post("/categories/save", (req, res) => {
     }
 });
 
+router.get("/admin/categories", (req, res) => {
+     Category.findAll({
+        order:[['title', 'ASC']]
+     }).then((categories) => {
+        res.render("admin/categories/index", {
+            categories: categories
+        });
+    })
+})
+
 module.exports = router;
