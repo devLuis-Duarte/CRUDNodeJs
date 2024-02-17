@@ -9,10 +9,11 @@
                 </div>
                 
                 <div class="card-body">
-                    <form action="/categories/save" method="post">
+                    <form action="/categories/update" method="post">
                         <label for="oldTitle">Título atual</label>
                         <input type="text" class="form-control" name="oldTitle" value="<%=category.title %>" readonly>
                         <br>
+                        <input type="hidden" name="id" value="<%= category.id %>">
                         <label for="title">Novo título</label>
                         <input type="text" class="form-control" name="title" placeholder="Defina o novo título da categoria">
                         <br>
