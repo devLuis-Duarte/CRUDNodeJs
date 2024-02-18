@@ -9,7 +9,7 @@
                 </div>
                 
                 <div class="card-body">
-                    <form action="/categories/update" method="post">
+                    <form action="/categories/update" method="post" onsubmit="updateConfirmation(event, this)">
                         <label for="oldTitle">Título atual</label>
                         <input type="text" class="form-control" name="oldTitle" value="<%=category.title %>" readonly>
                         <br>
@@ -26,3 +26,13 @@
 </body>
 
 <%- include ('../../partials/footer.ejs') %>
+<script>
+    function updateConfirmation(event, form){
+        event.preventDefault();
+        var response = confirm("Tem certeza que deseja atualizar este item?")
+        if(response){
+            form.submit();
+        }
+
+    }
+</script>
