@@ -17,11 +17,22 @@ router.post("/articles/save", (req, res) => {
         slug: slugify(title),
         body: body,
     }).then(() => {
-        res.redirect("/");
+        res.redirect("/admin/articles");
     });
    }else {
     res.redirect("/");
    }
+});
+
+router.get("/admin/articles/", (req, res) => {
+    Article.findAll({
+        order:[['title', 'ASC']]
+    }).then((articles) => {
+        res.render("admin/articles/index", {
+            articles: articles,
+        });
+    })
+    
 });
 
 

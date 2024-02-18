@@ -1,0 +1,30 @@
+<%- include ('../../partials/header.ejs') %>
+<%- include ('../../partials/navbar.ejs') %>
+<body>
+    <div class="container">
+        <hr>
+       <h2>Artigos</h2>
+       <a href="/admin/articles/new" class="btn btn-success">Criar novo artigo</a>
+       <hr>
+
+       <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Artigo</th>
+                <th>Corpo</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% articles.forEach(article => { %>
+            <tr>
+                    <th>Id <%= article.id %></th>
+                    <th>Título <%= article.title %></th>
+                    <th>Corpo <%= article.body %></th>
+                <% }) %>
+                
+            </tr>
+        </tbody>
+       </table>
+    </div>
+</body>
+<%- include ('../../partials/footer.ejs') %>
