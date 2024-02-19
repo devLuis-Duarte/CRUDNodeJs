@@ -1,0 +1,26 @@
+<%- include ('../../partials/header.ejs') %>
+<%- include ('../../partials/navbar.ejs') %>
+<body>
+    <div class="container">
+        <hr>
+        <div class="card">
+            <div class="card-header">
+                <h2>Edição de artigo</h2>
+            </div>
+
+            <div class="card-body">
+                <form action="">
+                    <label for="oldTitle">Título antigo</label>
+                    <input type="text" class="form-control" name="oldTitle" value="<%= article.title %>" readonly >
+                    <input type="hidden" name="id" value="<%= article.id %>">
+                    <br>
+                    <label for="newTitle">Novo título</label>
+                    <input type="text" class="form-control" name="newTitle" placeholder="Defina o título do artigo">
+                    <br>
+                    <button class="btn btn-success">Atualizar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+<%- include ('../../partials/footer.ejs') %>
