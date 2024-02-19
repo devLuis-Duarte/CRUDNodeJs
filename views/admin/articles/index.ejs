@@ -10,16 +10,27 @@
        <table class="table table-bordered">
         <thead>
             <tr>
+                <th>Id</th>
                 <th>Artigo</th>
+                <th>Slug</th>
                 <th>Corpo</th>
+                <th>Ações</th>
             </tr>
         </thead>
         <tbody>
             <% articles.forEach(article => { %>
             <tr>
-                    <th>Id <%= article.id %></th>
-                    <th>Título <%= article.title %></th>
-                    <th>Corpo <%= article.body %></th>
+                    <th> <%= article.id %> </th>
+                    <th> <%= article.title %> </th>
+                    <th> <%= article.slug %> </th>
+                    <th> <%= article.body %> </th>
+                    <th>
+                        <button class="btn btn-warning">Editar</button>
+                        <form action="/articles/delete" method="post" style="display: inline;" onsubmit="deleteConfirmation(event, this)">
+                            <input type="hidden" name="id" value="<%= article.id %>">
+                            <button class="btn btn-danger">Deletar</button>
+                        </form>
+                    </th>
                 <% }) %>
                 
             </tr>
@@ -28,3 +39,14 @@
     </div>
 </body>
 <%- include ('../../partials/footer.ejs') %>
+
+<script>
+    function deleteConfirmation(event, form){
+        event.preventDefault();
+        var response = confirm("Tem certeza que deseja excluir este item?");
+        if(response){
+            form.submit();
+        }
+        
+    }
+</script>
