@@ -14,23 +14,25 @@
                 <th>Artigo</th>
                 <th>Slug</th>
                 <th>Corpo</th>
+                <th>Categoria</th>
                 <th>Ações</th>
             </tr>
         </thead>
         <tbody>
             <% articles.forEach(article => { %>
             <tr>
-                    <th> <%= article.id %> </th>
-                    <th> <%= article.title %> </th>
-                    <th> <%= article.slug %> </th>
-                    <th> <%= article.body %> </th>
-                    <th>
+                    <td> <%= article.id %> </td>
+                    <td> <%= article.title %> </td>
+                    <td> <%= article.slug %> </td>
+                    <td> <%= article.body %> </td>
+                    <td></td>
+                    <td>
                         <a href="/admin/article/edit/<%= article.id %>" class="btn btn-warning">Editar</a>
                         <form action="/articles/delete" method="post" style="display: inline;" onsubmit="deleteConfirmation(event, this)">
                             <input type="hidden" name="id" value="<%= article.id %>">
                             <button class="btn btn-danger">Deletar</button>
                         </form>
-                    </th>
+                    </td>
                 <% }) %>
                 
             </tr>

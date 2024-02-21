@@ -16,16 +16,18 @@ router.get("/admin/articles/new", (req, res) => {
 router.post("/articles/save", (req, res) => {
    var title = req.body.title;
    var body = req.body.body;
+   var category = req.body.category;
    
    if(title != undefined && body != undefined){
     Article.create({
         title: title,
         slug: slugify(title),
         body: body,
+        categoryId: category,
     }).then(() => {
         res.redirect("/admin/articles");
     });
-   }else {
+   }else { 
     res.redirect("/");
    }
 });
