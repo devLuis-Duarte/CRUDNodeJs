@@ -34,7 +34,7 @@ router.post("/articles/save", (req, res) => {
 
 router.get("/admin/articles/", (req, res) => {
     Article.findAll({
-        order:[['title', 'ASC']]
+        include:[{model: Category}]
     }).then((articles) => {
         res.render("admin/articles/index", {
             articles: articles,

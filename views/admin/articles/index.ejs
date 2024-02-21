@@ -13,7 +13,6 @@
                 <th>Id</th>
                 <th>Artigo</th>
                 <th>Slug</th>
-                <th>Corpo</th>
                 <th>Categoria</th>
                 <th>Ações</th>
             </tr>
@@ -24,8 +23,7 @@
                     <td> <%= article.id %> </td>
                     <td> <%= article.title %> </td>
                     <td> <%= article.slug %> </td>
-                    <td> <%= article.body %> </td>
-                    <td></td>
+                    <td> <%= article.category.title %> </td>
                     <td>
                         <a href="/admin/article/edit/<%= article.id %>" class="btn btn-warning">Editar</a>
                         <form action="/articles/delete" method="post" style="display: inline;" onsubmit="deleteConfirmation(event, this)">
