@@ -1,6 +1,32 @@
 <%- include ('./partials/header.ejs') %>
+<%- include ('./partials/homenavbar.ejs') %>
 <body>
-    <h1>Página inicial</h1>
+    <div class="container">
+    <hr>
+        <div class="jumbotron">
+            <h1 class="display-4">Bem vindo ao Blogpress</h1>
+            <p class="lead">Esse é um simples blog desenvolvido por mim.</p>
+            <hr class="my-4">
+            <p>Saiba mais detalhes clicando no botão abaixo.</p>
+            <p class="lead">
+                <a class="btn btn-secondary btn-lg" href="#" role="button">Leia mais</a>
+            </p>
+        </div>
+        <hr>
+      <% articles.forEach(article => { %>
+        <div class="card">
+            <div class="card-header">
+                <h2> <%= article.title %> </h2>
+            </div>
+
+            <div class="card-body">
+                <h4> <%= article.category.title %> </h4>
+                <hr>
+                <button class="btn btn-primary">Ler artigo</button>
+            </div>
+        </div><br>
+      <% }) %>
+    </div>
 </body>
 
 <%- include ('./partials/footer.ejs') %>
