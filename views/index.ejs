@@ -22,7 +22,7 @@
             <div class="card-body">
                 <h4> <%= article.category.title %> </h4>
                 <hr>
-                <button class="btn btn-primary">Ler artigo</button>
+                <a href="/<%= article.slug %>" class="btn btn-primary">Ler artigo</a>
             </div>
         </div><br>
       <% }) %>
