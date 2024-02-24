@@ -9,13 +9,21 @@
             </div>
 
             <div class="card-body">
-                <form action="">
+                <form action="/article/update" method="post">
                     <label for="oldTitle">Título antigo</label>
                     <input type="text" class="form-control" name="oldTitle" value="<%= article.title %>" readonly >
                     <input type="hidden" name="id" value="<%= article.id %>">
                     <br>
-                    <label for="newTitle">Novo título</label>
-                    <input type="text" class="form-control" name="newTitle" placeholder="Defina o título do artigo">
+                    <label for="title">Novo título</label>
+                    <input type="text" class="form-control" name="title" placeholder="Defina o título do artigo">
+                    <br>
+                    <textarea name="body" id="article" class="form-control" cols="144" rows="1" placeholder="Defina o corpo do artigo"></textarea>
+                    <br>
+                    <select name="category" class="form-control">
+                        <% categories.forEach(category => { %>
+                            <option value="<%= category.id %>"><%= category.title %></option>
+                        <% }) %>
+                    </select>
                     <br>
                     <button class="btn btn-success">Atualizar</button>
                 </form>
@@ -23,4 +31,20 @@
         </div>
     </div>
 </body>
+
+<div id="content" style="display: none;">
+    <%- article.body %>
+</div>
 <%- include ('../../partials/footer.ejs') %>
+
+<script src="/tinymce/tinymce.min.js" referrerpolicy="origin"></script>
+<script>
+    tinymce.init({
+        selector: '#article',
+        language: 'pt_BR',
+        plugins: 'advlist autolink link image lists print preview hr searchreplace wordcount fullscreen insertdatetime media save table paste emoticals',
+        init_instance_callback: () => {
+            tinymce.get("article").setContent($("#content").html())
+        }
+    });
+</script>

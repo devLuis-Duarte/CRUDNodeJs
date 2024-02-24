@@ -2,10 +2,19 @@
     <a class="navbar-brand" href="/">
         <h4 id="homePress">Blogpress</h4>
     </a>
-    
+
     <ul class="navbar-nav mr-auto">
         <li class="nav-item">
             <a class="nav-link" href="/">Home</a>
         </li>
     </ul>
+
+    <% categories.forEach(category => { %>
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="/category/<%= category.slug %>"> <%= category.title %> </a>
+            </li>
+        </ul>
+    <% }) %>
+
 </nav>
