@@ -21,7 +21,12 @@
                     <br>
                     <select name="category" class="form-control">
                         <% categories.forEach(category => { %>
-                            <option value="<%= category.id %>"><%= category.title %></option>
+                            <% if(category.id == article.categoryId) { %>
+                                <option value="<%= category.id %>" selected><%= category.title %></option>
+                            <% } else { %>
+                                <option value="<%= category.id %>"><%= category.title %></option>
+                            <% } %>
+                                
                         <% }) %>
                     </select>
                     <br>
@@ -44,7 +49,13 @@
         language: 'pt_BR',
         plugins: 'advlist autolink link image lists print preview hr searchreplace wordcount fullscreen insertdatetime media save table paste emoticals',
         init_instance_callback: () => {
-            tinymce.get("article").setContent($("#content").html())
+            var editor = tinymce.get('article')
+
+            if(editor){
+                editor.setContent($("#content").html())
+                editor.fire('change');
+            }
         }
+
     });
 </script>

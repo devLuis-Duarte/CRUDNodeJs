@@ -89,6 +89,8 @@ router.get("/admin/article/edit/:id", (req, res) => {
 router.post("/article/update", (req, res) => {
     var id = req.body.id;
     var title = req.body.title;
+    var body = req.body.body;
+    var category = req.body.category;
 
     if(isNaN(id)){
         res.send("/admin/articles/");
@@ -96,13 +98,17 @@ router.post("/article/update", (req, res) => {
         Article.update({
             title: title,
             slug: slugify(title),
+            body: body,
+            categoryId: category,
         }, {
             where:{
                 id: id
             }
         }).then(() => {
             res.redirect("/admin/articles/");
-        })
+        }).catch((error) => {
+            res.redirect("/");
+        });
     }
 });
 module.exports = router;
