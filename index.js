@@ -6,10 +6,12 @@ const connection = require("./database/database");
 //Importando Controllers
 const articlesController = require("./articles/articlesController");
 const categoriesController = require("./categories/categoryController");
+const usersController = require("./users/UsersController");
 
 //Importando models
 const Article = require("./articles/Article");
 const Category = require("./categories/Category");
+const User = require("./users/User");
 
 connection.authenticate()
 .then(()=>{
@@ -25,6 +27,7 @@ app.use(bodyParser.json());
 
 app.use("/", categoriesController);
 app.use("/", articlesController);
+app.use("/", usersController);
 
 app.get("/", function(req, res){
     Article.findAll().then((articles) => {
