@@ -1,1 +1,26 @@
-<h1>formulario de cadastro</h1>
+<%- include('../../partials/header.ejs') %>
+<%- include('../../partials/navbar.ejs') %>
+<body>
+    <div class="container">
+        <hr>
+        <div class="card mt-3">
+            <div class="card-header">
+                <h2>Cadastro de usuário</h2>
+            </div>
+
+            <div class="card-body">
+                <form action="/users/create" method="post">
+                    <input class="form-control" name="email" type="email" placeholder="exemplo@gmail.com">
+                    <br>
+                    <input class="form-control" name="password" type="password" placeholder="Defina a senha">
+                    <br>
+                    <div class="d-grid gap-2">
+                        <button class="btn btn-success" type="submit">Cadastrar</button>
+                      </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+
+<%- include('../../partials/footer.ejs') %>
