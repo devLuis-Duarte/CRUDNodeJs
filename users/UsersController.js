@@ -11,6 +11,26 @@ router.get("/admin/users", (req, res) => {
     })  
 });
 
+router.post("/users/delete", (req, res) => {
+    var id = req.body.id;
+
+    if(id != undefined){
+        if(!isNaN(id)){
+            User.destroy({
+                where: {
+                    id: id
+                }
+            }).then(() => {
+                res.redirect("/admin/users");
+            })
+        }else {
+            res.redirect("/admin/users");
+        }
+    }else {
+        res.redirect("/admin/users");
+    }
+});
+
 router.get("/admin/users/create", (req, res) => {
     res.render("admin/users/create");
 });
@@ -42,5 +62,7 @@ router.post("/users/create", (req, res) => {
         }
     })
 });
+
+
 
 module.exports = router;

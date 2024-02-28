@@ -13,6 +13,7 @@
                 <tr>
                     <th>Id</th>
                     <th>Email</th>
+                    <th>Ações</th>
                 </tr>
             </thead>
 
@@ -21,6 +22,13 @@
                 <tr>
                         <td><%= user.id %></td>
                         <td><%= user.email %></td>
+                        <td>
+                            <a href="" class="btn btn-warning">Editar</a>
+                            <form action="/users/delete" method="post" id="form" style="display: inline;" onsubmit="userdeleteConfrimation(event, this)">
+                                <input type="hidden" name="id" value="<%= user.id %>">
+                                <button type="submit" style="display: inline;" class="btn btn-danger">Deletar</button>
+                            </form>
+                        </td>
                     <% }) %>
                 </tr>
             </tbody>
@@ -29,3 +37,14 @@
 </body>
 
 <%- include('../../partials/footer.ejs') %>
+
+<script>
+    function userdeleteConfrimation(event, form){
+        event.preventDefault();
+        var response = confirm("Tem certeza que deseja excluir sua conta?")
+        if(response){
+            form.submit();
+        }
+
+    }
+</script>
