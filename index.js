@@ -2,6 +2,7 @@ const express = require("express");
 const app = express(); 
 const bodyParser = require("body-parser");
 const connection = require("./database/database");
+const session = require("express-session");
 
 //Importando Controllers
 const articlesController = require("./articles/articlesController");
@@ -20,8 +21,19 @@ console.log("banco conectado com sucesso");
     console.log(error);
 });
 
+//Session
+app.use(session({
+    secret: "rwermewoomrow",
+    cookie: {maxAge: 30000}
+}));
+
+//View Engine
 app.set('view engine', 'ejs');
+
+//Static folder: 'public'
 app.use(express.static('public'));
+
+//Body-parser
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
