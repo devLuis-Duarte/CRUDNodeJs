@@ -24,8 +24,8 @@ console.log("banco conectado com sucesso");
 //Session
 app.use(session({
     secret: "rwermewoomrow",
-    cookie: {maxAge: 30000}
-}));
+    cookie: {maxAge: 300000} 
+}));     
 
 //View Engine
 app.set('view engine', 'ejs');
